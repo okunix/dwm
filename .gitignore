@@ -3,3 +3,4 @@ dwm
 config.h
 *.orig
 *.rej
+*.tar.gz
