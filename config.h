@@ -2,7 +2,7 @@
 
 /* appearance */
 static const unsigned int borderpx  = 0;        /* border pixel of windows */
-static const unsigned int gappx     = 20;        /* gaps between windows */
+static const unsigned int gappx     = 0;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
@@ -11,11 +11,11 @@ static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=10" };
 static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=10";
 static unsigned int baralpha        = OPAQUE;
 static unsigned int borderalpha     = OPAQUE;
-static const char col_gray1[]       = "#111111";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#c0c0c0";
-static const char col_gray4[]       = "#ffffff";
-static const char col_cyan[]        = "#111111";
+static const char col_gray1[]       = "#1a1b26";
+static const char col_gray2[]       = "#414868";
+static const char col_gray3[]       = "#a9b1d6";
+static const char col_gray4[]       = "#cad4ff";
+static const char col_cyan[]        = "#1a1b26";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
