@@ -1,7 +1,7 @@
 #!/bin/sh
 
 get_wifi() {
-	ssid=$(nmcli connection show --active | awk '$(NF-1)=="wifi"{ print $1 }')
+	ssid=$(nmcli connection show --active | grep wifi | sed -E 's/\s+\S+\s+\S+\s+\S+\s*$//')
 	[ -n "$ssid" ] && echo "WIFI: $ssid"
 }
 
@@ -31,7 +31,7 @@ get_battery() {
 }
 
 get_status() {
-	echo " $(get_volume) | $(get_wifi) | $(get_ethernet) | $(free -h | awk '/^Mem:/{print "MEM: " $3 "/" $2}') | $(get_battery) | $(date "+%Y %b %d (%a) %H:%M")"
+	echo " $(get_volume) | $(get_wifi) | $(get_ethernet) | $(free -h | awk '/^Mem:/{print "MEM: " $3 "/" $2}') | $(get_battery) | $(date "+%Y %b %d (%a) %H:%M")" | sed -E -e 's/\|[\| ]*\|/|/g' -e 's/^\s*\|/ /g'
 }
 
-xsetroot -name "$(get_status | sed -E -e 's/\|\s*\|/|/g' -e 's/^\s*\|/ /g')"
+xsetroot -name "$(get_status)"
