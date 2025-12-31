@@ -13,9 +13,9 @@ get_ethernet() {
 }
 
 get_volume() {
-	volume_info="$(wpctl get-volume @DEFAULT_AUDIO_SINK@)"
-	volume_percentage="$(awk "BEGIN{ print ($(echo "$volume_info" | cut -d' ' -f2)*100) end; }")%"
-	if echo "$volume_info" | grep -qiF '[MUTED]'; then
+	default_sink=$(pactl get-default-sink)
+	volume_percentage="$(pactl get-sink-volume "$default_sink" | awk '{print $5}')"
+	if pactl get-sink-mute "$default_sink" | grep -qiF 'yes'; then
 		volume_mute="[M]"
 	fi
 	echo "VOL: $volume_percentage$volume_mute"
